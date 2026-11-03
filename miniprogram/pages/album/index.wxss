@@ -1,0 +1,15 @@
+.moment-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:24rpx; margin:24rpx 0; }
+.moment-grid .moment { margin-top:0; }
+.panel.row { flex-wrap:wrap; font-size:24rpx; }
+.timeline { padding:24rpx; background:rgba(255,255,255,.9); border:1rpx solid rgba(255,107,139,.12); border-radius:32rpx; margin-top:24rpx; }
+.year-picker { font-size:26rpx; color:#c75170; font-weight:600; padding:0 20rpx; }
+.month-scroll { width:100%; margin-top:24rpx; }
+.month-track { display:flex; width:max-content; position:relative; padding:8rpx 0 4rpx; }
+.month-track::before { content:""; position:absolute; top:28rpx; left:24rpx; right:24rpx; border-top:4rpx dashed #f2d3dd; }
+.month-track button { width:76rpx; display:flex; flex-direction:column; align-items:center; gap:12rpx; border:0; background:none; padding:0; color:#999; font-size:20rpx; flex-shrink:0; position:relative; }
+.month-dot { width:24rpx; height:24rpx; margin:8rpx; border:4rpx solid #e7dfe1; background:#fff; border-radius:50%; line-height:24rpx; }
+.selected .month-dot { border-color:#ff6b8b; background:#ff6b8b; }
+.month-track .selected { color:#c75170; }
+.month-track button:first-child .month-dot { width:40rpx; height:40rpx; margin:0; font-size:26rpx; border:0; color:#ff6b8b; background:#ffedf2; line-height:40rpx; }
+@media (max-width:768px) { .moment .photos:not(.count-1) { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (min-width:768px) { .moment-grid { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; } }

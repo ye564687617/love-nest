@@ -1,0 +1,37 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file: .deploy.env
+    environment:
+      MYSQL_DATABASE: lianai
+    volumes:
+      - production_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_ROOT_PASSWORD\" mysql --protocol=TCP -h127.0.0.1 -uroot -Nse 'SELECT 1'"]
+      interval: 5s
+      timeout: 3s
+      retries: 40
+  php:
+    build: ./php
+    restart: unless-stopped
+    env_file: .deploy.env
+    volumes:
+      - ./html:/var/www/html
+      - ./php/config.production.php:/var/www/html/inc/config.php:ro
+      - ./php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8090:80"
+    volumes:
+      - ./html:/var/www/html:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - php
+volumes:
+  production_mysql:

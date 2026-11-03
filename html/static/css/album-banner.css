@@ -1,0 +1,348 @@
+/* 粉色浪漫风格 - 毛玻璃卡片头部 */
+
+.album-banner {
+    width: 100%;
+    max-width: 900px;
+    margin: 24px auto 32px;
+    padding: 36px 32px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 107, 139, 0.15);
+    box-shadow:
+        0 8px 32px rgba(255, 107, 139, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 头部装饰光晕 - 粉色系 */
+.album-banner::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 107, 139, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.album-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 158, 181, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.banner-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* 主标题 - 粉色渐变 */
+.banner-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 34px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF6B8B 0%, #FF9EB5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 0 0 10px 0;
+    letter-spacing: 5px;
+}
+
+/* 副标题 */
+.banner-subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 24px 0;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+/* 分隔线 - 粉色渐变 + 花朵装饰 */
+.banner-divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #FF6B8B, #FF9EB5);
+    margin: 0 auto 24px;
+    border-radius: 2px;
+    position: relative;
+}
+
+.banner-divider::before,
+.banner-divider::after {
+    content: '✿';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #FFB7C5;
+    line-height: 1;
+    background: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+
+.banner-divider::before {
+    left: -22px;
+}
+
+.banner-divider::after {
+    right: -22px;
+}
+
+/* 统计数据区 */
+.banner-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 107, 139, 0.06);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 107, 139, 0.12);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 107, 139, 0.1);
+    border-color: rgba(255, 107, 139, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 107, 139, 0.15);
+}
+
+.stat-number {
+    font-family: 'Montserrat', 'Noto Sans SC', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF6B8B, #FF9EB5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .album-banner {
+        width: auto;
+        margin: 16px 16px 24px;
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .banner-title {
+        font-size: 26px;
+        letter-spacing: 3px;
+        margin-bottom: 8px;
+    }
+
+    .banner-subtitle {
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    .banner-divider {
+        margin-bottom: 18px;
+    }
+
+    .banner-stats {
+        gap: 8px;
+    }
+
+    .stat-item {
+        padding: 7px 12px;
+        flex: 1;
+        min-width: 0;
+        justify-content: center;
+    }
+
+    .stat-number {
+        font-size: 20px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .album-banner {
+        width: auto;
+        margin: 12px 12px 20px;
+        padding: 22px 14px;
+        border-radius: 16px;
+    }
+
+    .banner-title {
+        font-size: 22px;
+        letter-spacing: 2px;
+        margin-bottom: 6px;
+    }
+
+    .banner-subtitle {
+        font-size: 12px;
+        margin-bottom: 14px;
+        letter-spacing: 1px;
+    }
+
+    .banner-divider {
+        width: 40px;
+        margin-bottom: 14px;
+    }
+
+    .banner-divider::before,
+    .banner-divider::after {
+        font-size: 11px;
+    }
+
+    .banner-divider::before {
+        left: -16px;
+    }
+
+    .banner-divider::after {
+        right: -16px;
+    }
+
+    /* 统计胶囊一行自适应 */
+    .banner-stats {
+        gap: 6px;
+    }
+
+    .stat-item {
+        padding: 6px 8px;
+        flex: 1;
+        min-width: 0;
+        gap: 4px;
+        justify-content: center;
+    }
+
+    .stat-number {
+        font-size: 17px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+        letter-spacing: 0;
+    }
+}
+
+/* 超小屏 (<360px) */
+@media (max-width: 360px) {
+    .album-banner {
+        width: auto;
+        margin: 10px 10px 16px;
+        padding: 18px 10px;
+        border-radius: 14px;
+    }
+
+    .banner-title {
+        font-size: 19px;
+        letter-spacing: 2px;
+    }
+
+    .banner-subtitle {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+
+    .banner-divider {
+        width: 36px;
+        margin-bottom: 12px;
+    }
+
+    .stat-item {
+        padding: 5px 6px;
+        gap: 3px;
+    }
+
+    .stat-number {
+        font-size: 15px;
+    }
+
+    .stat-label {
+        font-size: 9px;
+    }
+}
+
+/* ============================================================
+   返回首页按钮（位于标题左上角）
+   ============================================================ */
+.album-back-btn {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 14px 7px 9px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 107, 139, 0.22);
+    color: #FF6B8B;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(255, 107, 139, 0.12);
+    transition: all 0.25s ease;
+}
+
+.album-back-btn svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.album-back-btn:hover {
+    background: #ffffff;
+    border-color: rgba(255, 107, 139, 0.45);
+    color: #ff4d73;
+    transform: translateX(-2px);
+    box-shadow: 0 4px 14px rgba(255, 107, 139, 0.22);
+}
+
+.album-back-btn:active {
+    transform: translateX(-1px) scale(0.97);
+}
+
+/* 手机端（≤768px 页面已切换为移动布局）不显示，顶部空间留给标题 */
+@media (max-width: 768px) {
+    .album-back-btn {
+        display: none;
+    }
+}

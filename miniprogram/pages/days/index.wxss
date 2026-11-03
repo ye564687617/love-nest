@@ -1,0 +1,10 @@
+.days-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20rpx; margin-top:24rpx; }
+.day-card { min-width:0; padding:28rpx 20rpx; background:rgba(255,255,255,.9); border-radius:32rpx; border:1rpx solid rgba(255,107,139,.15); text-align:center; box-shadow:0 8rpx 24rpx rgba(200,150,140,.1); }
+.day-kind { color:#9e786e; font-size:22rpx; }
+.day-title { font-family:var(--serif); font-size:30rpx; font-weight:600; margin-top:24rpx; overflow-wrap:break-word; }
+.day-date { color:#8c7c7c; font-size:22rpx; margin-top:8rpx; }
+.day-count { width:180rpx; height:180rpx; border:10rpx solid #f3d9d2; border-top-color:#e88a7a; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; margin:28rpx auto 20rpx; color:#b36d62; font-size:22rpx; }
+.day-count text { font:600 52rpx Arial,sans-serif; }
+.day-label { color:#a75b51; font-size:24rpx; }
+.day-card button { margin:20rpx auto 0; }
+@media (max-width:340px) { .days-grid { grid-template-columns:minmax(0,1fr); } }

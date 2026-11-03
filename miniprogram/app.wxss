@@ -1,0 +1,68 @@
+/* Colors, glass surfaces and typography follow html/static/css. */
+page { --accent:#ff6b8b; --ink:#333; --muted:#777; --surface:rgba(255,255,255,.95); --serif:"Noto Serif SC","Songti SC","STSong",serif; background:#f9eff2; color:var(--ink); font-family:-apple-system,"Noto Sans SC","PingFang SC",sans-serif; font-size:28rpx; line-height:1.7; letter-spacing:0; }
+view,text,button,input,textarea,image,scroll-view { box-sizing:border-box; }
+.page-background { position:fixed; inset:0; width:100%; height:100vh; pointer-events:none; filter:blur(3px); z-index:0; }
+.petals { position:fixed; inset:0; pointer-events:none; z-index:3; overflow:hidden; }
+.petal { position:absolute; top:-30rpx; width:22rpx; height:22rpx; opacity:0; }
+.p1 { left:12%; animation-delay:-4s!important; }
+.p2 { left:35%; animation-delay:-11s!important; }
+.p3 { left:57%; animation-delay:-7s!important; }
+.p4 { left:78%; animation-delay:-14s!important; }
+.p5 { left:92%; animation-delay:-2s!important; }
+.p6 { left:48%; animation-delay:-17s!important; }
+@media (prefers-reduced-motion:no-preference) { .petal { animation:petal-fall 20s linear infinite; } }
+@keyframes petal-fall { 0% { transform:translate(0,-30rpx) rotate(0); opacity:0; } 8%,88% { opacity:.7; } 100% { transform:translate(-100rpx,105vh) rotate(240deg); opacity:0; } }
+.page { position:relative; z-index:1; width:100%; max-width:1000px; margin:0 auto; padding:24rpx 24rpx 64rpx; }
+.title { font-family:var(--serif); font-size:44rpx; font-weight:700; color:var(--accent); overflow-wrap:break-word; }
+.subtitle,.muted { color:var(--muted); }
+.subtitle { font-size:24rpx; margin-top:8rpx; }
+.section { margin-top:36rpx; }
+.section-title { font-family:var(--serif); font-size:32rpx; font-weight:600; margin-bottom:20rpx; }
+.row { display:flex; align-items:center; justify-content:space-between; gap:16rpx; }
+.row > .title,.row > .section-title { flex:1; min-width:0; overflow-wrap:break-word; }
+.row > button { flex-shrink:0; }
+.panel,.page-banner,.empty,.skeleton { border:1rpx solid rgba(255,107,139,.15); background:rgba(255,255,255,.88); border-radius:32rpx; box-shadow:0 8rpx 32rpx rgba(255,107,139,.1),inset 0 1rpx 0 rgba(255,255,255,.65); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+.panel { padding:28rpx; margin-top:24rpx; }
+.page-banner { padding:40rpx 24rpx 32rpx; text-align:center; margin-bottom:28rpx; }
+.banner-divider { display:flex; align-items:center; justify-content:center; gap:16rpx; color:#e8a0b1; font-size:24rpx; margin:20rpx auto; }
+.banner-divider::before,.banner-divider::after { content:""; height:2rpx; width:40rpx; background:#ff9eb5; }
+.banner-stats { display:flex; justify-content:center; flex-wrap:wrap; gap:12rpx; }
+.banner-stat { display:flex; align-items:center; justify-content:center; gap:8rpx; padding:8rpx 18rpx; border:1rpx solid rgba(255,107,139,.16); border-radius:50rpx; background:rgba(255,107,139,.06); color:var(--muted); font-size:22rpx; }
+.banner-number { font-family:Arial,sans-serif; font-size:36rpx; font-weight:700; color:var(--accent); }
+.empty,.error { padding:48rpx 24rpx; text-align:center; color:var(--muted); margin-top:24rpx; overflow-wrap:break-word; }
+.empty-mark { display:block; width:72rpx; height:72rpx; margin:0 auto 20rpx; opacity:.65; }
+.error { background:#fff3f5; color:#a02445; border:1rpx solid #f3cbd4; border-radius:24rpx; }
+.error button,.empty button { margin:20rpx auto 0; width:fit-content; }
+button { font-size:26rpx; font-weight:500; border-radius:24rpx; line-height:1.5; padding:20rpx 28rpx; background:rgba(255,255,255,.9); color:#b74765; margin:0; border:1rpx solid rgba(255,107,139,.24); }
+button::after { border:0; }
+button.primary { background:linear-gradient(135deg,#ff6b8b,#ff8e53); color:#fff; border-color:transparent; box-shadow:0 6rpx 20rpx rgba(255,107,139,.2); font-weight:600; }
+button.small { padding:12rpx 20rpx; font-size:24rpx; border-radius:40rpx; }
+button[disabled] { opacity:.55; }
+button:active { opacity:.8; }
+.field { margin:28rpx 0; }
+.label { display:block; font-size:26rpx; font-weight:500; margin-bottom:12rpx; color:#555; }
+input,textarea,.picker { background:rgba(255,255,255,.95); border:1rpx solid #eadce1; border-radius:20rpx; padding:22rpx; width:100%; color:#333; font-size:28rpx; }
+input { height:88rpx; }
+textarea { height:270rpx; }
+.moment { margin-top:28rpx; padding:28rpx; background:rgba(255,255,255,.95); border:1rpx solid rgba(0,0,0,.06); border-radius:32rpx; box-shadow:0 4rpx 24rpx rgba(0,0,0,.06); overflow:hidden; }
+.moment-date { font-family:var(--serif); font-size:40rpx; font-weight:700; line-height:1.2; }
+.moment-year { color:#999; font-size:22rpx; }
+.moment-location { color:var(--muted); font-size:23rpx; max-width:55%; overflow-wrap:break-word; }
+.avatar { width:56rpx; height:56rpx; border-radius:50%; flex-shrink:0; background:#f6e5eb; border:2rpx solid #fff; }
+.author { display:flex; align-items:center; gap:14rpx; color:#777; font-size:24rpx; }
+.moment-footer { margin-top:24rpx; padding-top:20rpx; border-top:1rpx solid #f3e9ed; }
+.body { white-space:pre-wrap; overflow-wrap:break-word; margin:22rpx 0; font-family:var(--serif); font-size:28rpx; }
+.photos { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10rpx; }
+.photos.count-1 { grid-template-columns:1fr; }
+.photos.count-2,.photos.count-4 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.photo { display:block; width:100%; height:auto; aspect-ratio:1; border-radius:20rpx; background:#f8eff2; }
+.skeleton { height:260rpx; margin:24rpx 0; background:rgba(255,255,255,.75); }
+.actions { display:flex; flex-wrap:wrap; gap:16rpx; margin-top:24rpx; }
+.tag { font-size:23rpx; color:#b74765; }
+.hint { font-size:24rpx; color:var(--muted); margin-top:16rpx; }
+.icon { width:36rpx; height:36rpx; flex-shrink:0; vertical-align:middle; }
+.tabs { display:flex; gap:10rpx; padding:10rpx; margin:24rpx 0; border-radius:28rpx; border:1rpx solid rgba(255,107,139,.14); background:rgba(255,255,255,.88); }
+.tabs button { flex:1; min-width:0; padding:16rpx 4rpx; background:transparent; border:0; border-radius:22rpx; font-size:24rpx; color:#777; }
+.tabs button.selected { background:rgba(255,107,139,.12); color:#b74765; font-weight:600; }
+@media (prefers-reduced-motion:reduce) { .animated,.heart-beat,.rolling,.record-spinning { animation:none!important; } .wheel { transition:none!important; } }
+@media (min-width:768px) { .page { padding:40rpx 48rpx 64rpx; } }

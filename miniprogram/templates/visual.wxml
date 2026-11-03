@@ -1,0 +1,20 @@
+<template name="background">
+  <image class="page-background" src="/assets/web-background.jpg" mode="aspectFill"/>
+  <view class="petals" aria-hidden="true"><image class="petal p1" src="/assets/petal.png"/><image class="petal p2" src="/assets/petal.png"/><image class="petal p3" src="/assets/petal.png"/><image class="petal p4" src="/assets/petal.png"/><image class="petal p5" src="/assets/petal.png"/><image class="petal p6" src="/assets/petal.png"/></view>
+</template>
+<template name="moment">
+  <view class="moment">
+    <view class="row">
+      <view><view class="moment-date">{{item.dateMonth}}</view><view class="moment-year">{{item.dateYear}}</view></view>
+      <view wx:if="{{item.location}}" class="moment-location">{{item.location}}</view>
+    </view>
+    <view class="photos count-{{item.images.length}} section" wx:if="{{item.images.length}}">
+      <image wx:for="{{item.images}}" wx:for-item="photo" wx:key="*this" class="photo" src="{{photo}}" mode="aspectFill" bindtap="preview" data-images="{{item.images}}" data-current="{{photo}}"/>
+    </view>
+    <view class="body">{{item.content}}</view>
+    <view class="row moment-footer">
+      <view class="author"><image wx:if="{{item.avatar}}" class="avatar" src="{{item.avatar}}" mode="aspectFill"/><text>{{item.nickname}}</text></view>
+      <view class="row"><text wx:if="{{!item.status}}" class="tag">未公开</text><button wx:if="{{canMoments}}" class="small" bindtap="edit" data-module="moments" data-item="{{item}}">编辑</button></view>
+    </view>
+  </view>
+</template>

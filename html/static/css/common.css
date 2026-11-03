@@ -1,0 +1,185 @@
+/* 共用内联样式 - 提取自各HTML页面 */
+:root {
+    --primary-color: #FF6B8B;
+    --secondary-color: #4ECDC4;
+    --text-color: #333;
+    --light-bg: #F9F9F9;
+    --white: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --time-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.wenan {
+    cursor: pointer;
+}
+
+.icon {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: -0.3em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+li.cike {
+    border-bottom: 1px solid #ddd;
+}
+
+li {
+    list-style-type: none;
+}
+
+.cike:hover {
+    cursor: pointer;
+    cursor: url(https://demo.yh520.cn/static/css/static/image/2.png), pointer;
+}
+
+button:disabled {
+    background: #888;
+    opacity: 0.6;
+}
+
+.avatar {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    box-shadow: 0 2px 20px #c5c5c575;
+    border: 2px solid #fff;
+    margin-right: 0.8rem;
+}
+
+/* ===== 全局图片懒加载容器（img-lazy.js 按需包裹，仅加载态装饰） ===== */
+body #global-loader { transition:opacity .12s ease,visibility .12s ease; }
+@media (prefers-reduced-motion: reduce) {
+    body #global-loader, .img-loader-wrap img { transition:none; }
+}
+.img-loader-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(240, 224, 230, 0.3);
+    /* 默认自适应内容；内容图片默认块级展示，避免 wrap 破坏行内布局 */
+    display: inline-block;
+    max-width: 100%;
+    line-height: 0;
+}
+.img-loader-wrap img {
+    display: block;
+    max-width: 100%;
+}
+.img-loader-wrap:not(.img-loaded):not(.img-error) {
+    /* 加载中给 spinner 一个可显示的兜底最小高度，防止图片完全无尺寸时 spinner 不可见 */
+    min-height: 60px;
+}
+.img-loader-wrap img {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+.img-loader-wrap.img-loaded img {
+    opacity: 1;
+}
+/* 加载旋转动画 */
+.img-loader-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 36px;
+    height: 36px;
+    border: 3px dotted #e8b4c0;
+    border-style: solid solid dotted dotted;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: imgRotation 2s linear infinite;
+}
+.img-loader-spinner::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;right: 0;top: 0;bottom: 0;
+    margin: auto;
+    border: 3px dotted #FF3D00;
+    border-style: solid solid dotted;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    animation: imgRotationBack 1s linear infinite;
+    transform-origin: center center;
+}
+@keyframes imgRotation {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes imgRotationBack {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+.img-loader-wrap.img-loaded .img-loader-spinner {
+    display: none;
+}
+.img-loader-wrap.img-error .img-loader-spinner {
+    display: none;
+}
+.img-lost-icon {
+    display: none;
+    position: absolute;
+    top: 50%;left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #c88;
+    font-size: 28px;
+    animation: imgLostPulse 2s ease-in-out infinite;
+}
+.img-lost-icon svg {
+    width: 1em;
+    height: 1em;
+}
+.img-loader-wrap.img-error .img-lost-icon {
+    display: flex;
+}
+.img-lost-icon::after {
+    content: '照片丢失';
+    font-size: 11px;
+    color: #d99;
+    letter-spacing: 1px;
+    animation: imgLostText 2.5s ease-in-out infinite;
+}
+@keyframes imgLostPulse {
+    0%,100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+@keyframes imgLostText {
+    0%,100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+.img-loader-wrap.img-error {
+    background: rgba(240, 220, 220, 0.4);
+}
+.img-loader-wrap.img-error img {
+    display: none;
+}
+
+/* ===== 非包裹图片 shimmer 加载反馈（img-lazy.js v3，不改 DOM 结构） ===== */
+img.img-shimmer {
+    background: linear-gradient(90deg, #f5e8ec 25%, #fceff3 50%, #f5e8ec 75%);
+    background-size: 200% 100%;
+    animation: imgShimmer 1.8s ease-in-out infinite;
+}
+@keyframes imgShimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+img.img-loaded {
+    background: transparent;
+    animation: none;
+}
+img.img-error {
+    background: rgba(240, 220, 220, 0.35);
+    animation: none;
+}

@@ -1,0 +1,17 @@
+<import src="../../templates/visual.wxml"/>
+<template is="background"/>
+<view class="page">
+  <view class="page-banner"><view class="title">我们的歌单</view><view class="subtitle">把喜欢的旋律，听成我们的故事。</view><view class="banner-divider">✿</view></view>
+  <view wx:if="{{loading}}" class="skeleton"></view>
+  <view wx:if="{{error}}" class="error">{{error}}<button bindtap="load">重试</button></view>
+  <view wx:if="{{!loading && !error && !list.length}}" class="empty">歌单还空着，等一首属于我们的歌。</view>
+  <block wx:if="{{track}}">
+    <view class="now-playing"><view class="record {{playing ? 'record-spinning' : ''}}"><image wx:if="{{track.cover}}" class="cover" src="{{track.cover}}" mode="aspectFill"/><image wx:else class="cover fallback" src="/assets/music-white.png"/><view class="record-hole"></view></view><view class="section-title song-title">{{track.name}}</view><view class="muted">{{track.artist}}</view>
+      <slider value="{{progress}}" min="0" max="100" activeColor="#e88a7a" backgroundColor="#f0e0da" block-color="#e88a7a" block-size="16" bindchange="seek"/>
+      <view class="row muted"><text>{{elapsed}}</text><text>{{durationText}}</text></view>
+      <view class="transport"><button aria-label="上一首" bindtap="previous"><image src="/assets/previous.png"/></button><button class="play-button" aria-label="{{playing ? '暂停' : '播放'}}" bindtap="toggle" loading="{{buffering}}"><image src="{{playing ? '/assets/pause-white.png' : '/assets/play-white.png'}}"/></button><button aria-label="下一首" bindtap="next"><image src="/assets/next.png"/></button></view>
+      <view wx:if="{{track.insecure}}" class="hint">当前音源为 HTTP，手机端可能无法播放。</view>
+    </view><view wx:if="{{playbackError}}" class="error">{{playbackError}}</view>
+  </block>
+  <view class="song-list"><view wx:for="{{list}}" wx:key="id" class="song row {{track && item.id === track.id ? 'current' : ''}}" data-index="{{index}}" bindtap="select"><text class="song-number">{{index + 1}}</text><view class="song-info"><view>{{item.name}}</view><view class="muted">{{item.artist}}</view></view><image class="icon" wx:if="{{track && item.id === track.id && playing}}" src="/assets/music.png"/></view></view>
+</view>

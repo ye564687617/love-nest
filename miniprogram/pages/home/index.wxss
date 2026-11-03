@@ -1,0 +1,60 @@
+.home-page { position:relative; z-index:1; }
+.home-hero { height:calc(100vh - 40rpx); min-height:1020rpx; position:relative; overflow:hidden; color:#fff; text-align:center; }
+.hero-background { position:absolute; inset:0; width:100%; height:100%; filter:brightness(.8) blur(4px); opacity:.8; }
+.hero-title { position:absolute; top:22rpx; width:100%; font:700 48rpx var(--serif); text-shadow:0 4rpx 15rpx rgba(0,0,0,.4); }
+.hero-content { position:relative; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:90rpx 24rpx 60rpx; }
+.couple { display:flex; align-items:center; justify-content:center; gap:40rpx; }
+.lover { text-align:center; min-width:0; }
+.portrait { display:block; width:192rpx; height:192rpx; border-radius:50%; margin:0 auto 22rpx; box-shadow:0 16rpx 48rpx rgba(0,0,0,.2); background:#f5dfe6; }
+.lover-name { font:600 38rpx var(--serif); text-shadow:0 4rpx 10rpx rgba(0,0,0,.3); max-width:280rpx; overflow-wrap:break-word; }
+.lover-birth { font-size:22rpx; opacity:.95; margin-top:8rpx; }
+.love-center { display:flex; align-items:center; flex-direction:column; margin:42rpx 0 0; }
+.heart-beat { width:120rpx; height:120rpx; }
+.love-message { max-width:560rpx; padding:16rpx 28rpx; margin-top:24rpx; background:rgba(255,255,255,.23); backdrop-filter:blur(5px); border-radius:24rpx; font-size:24rpx; box-shadow:0 10rpx 30rpx rgba(0,0,0,.1); }
+.together { margin-top:64rpx; }
+.time-title { color:#ff6b8b; font:700 34rpx var(--serif); text-shadow:0 0 12rpx rgba(255,255,255,.9); margin-bottom:18rpx; }
+.time-container { display:flex; justify-content:center; gap:20rpx; }
+.time-unit { min-width:94rpx; padding:14rpx 10rpx; background:rgba(255,255,255,.93); border:1rpx solid rgba(255,107,139,.2); border-radius:20rpx; box-shadow:0 8rpx 24rpx rgba(0,0,0,.05); }
+.time-number { font:400 40rpx Arial,sans-serif; color:#ff6b8b; line-height:1.1; }
+.time-label { font-size:20rpx; color:#666; }
+.home-content { max-width:1120px; padding:24rpx 24rpx 56rpx; margin:0 auto; }
+.album-showcase,.zone { background:rgba(255,255,255,.78); backdrop-filter:blur(14px); border:1rpx solid rgba(255,230,220,.65); box-shadow:0 8rpx 36rpx rgba(200,150,140,.1),inset 0 1rpx 0 rgba(255,255,255,.65); border-radius:36rpx; }
+.album-showcase { padding:28rpx; }
+.album-header { display:flex; align-items:center; gap:16rpx; margin-bottom:24rpx; }
+.album-label { color:#b76b61; font-size:24rpx; flex:1; }
+.album-heading { font:700 30rpx var(--serif); color:#5d4037; }
+.album-header button { color:#b76b61; font-size:20rpx; padding:8rpx 14rpx; }
+.album-grid { display:grid; grid-template-columns:2fr 1fr; gap:12rpx; height:380rpx; }
+.story-image { width:100%; height:100%; border-radius:24rpx; }
+.side-images { display:grid; grid-template-rows:1fr 1fr; gap:12rpx; min-height:0; }
+.side-images image { width:100%; height:100%; min-height:0; border-radius:24rpx; }
+.story-caption { margin-top:20rpx; }
+.story-text { font:26rpx/1.7 var(--serif); color:#5d4037; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:10rpx; }
+.story-caption .muted { font-size:21rpx; }
+.text-link { background:none; border:0; box-shadow:none; color:#a75b51; font-size:22rpx; padding:16rpx 0 0; margin-left:auto; }
+.album-empty { padding:60rpx 0; text-align:center; color:#9b6e68; }
+.home-zones { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20rpx; margin-top:24rpx; align-items:stretch; }
+.zone { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:28rpx 16rpx; min-width:0; }
+.zone-title { display:flex; align-items:center; justify-content:center; gap:8rpx; font-size:25rpx; font-weight:600; color:#5d4037; margin-bottom:24rpx; }
+.zone-title .icon { width:28rpx; height:28rpx; }
+.zone-muted { color:#876e67; font-size:21rpx; text-align:center; }
+.countdown-ring,.list-ring { width:176rpx; height:176rpx; border:12rpx solid #e8a08f; border-left-color:#f5d7ce; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; margin-bottom:16rpx; }
+.countdown-number { font:600 56rpx Arial,sans-serif; color:#bf7467; }
+.list-ring { border-color:#f0e0da; color:#bf7467; font:600 38rpx Arial,sans-serif; }
+.music-disc { position:relative; width:154rpx; height:154rpx; border:22rpx solid #343131; border-radius:50%; background:#333; box-shadow:0 6rpx 20rpx rgba(0,0,0,.16); margin-bottom:18rpx; }
+.music-disc image { width:100%; height:100%; border-radius:50%; }
+.music-disc .disc-fallback { padding:22rpx; }
+.disc-hole { position:absolute; width:20rpx; height:20rpx; border:5rpx solid #fff1eb; background:#fff; border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%); }
+.zone-song { font-size:26rpx; font-weight:600; color:#5d4037; width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:center; }
+.mini-play { margin:16rpx auto 0; width:64rpx; height:64rpx; display:flex; align-items:center; justify-content:center; border:0; padding:16rpx; border-radius:50%; background:#e88a7a; }
+.mini-play image { width:100%; height:100%; }
+.sweet-stats { display:flex; justify-content:space-around; width:100%; text-align:center; gap:8rpx; margin:20rpx 0; }
+.sweet-number { font:600 42rpx Arial,sans-serif; color:#bf7467; }
+.zone .text-link { margin:14rpx auto 0; }
+.home-links { display:flex; gap:20rpx; margin-top:24rpx; }
+.home-links button { display:flex; align-items:center; justify-content:center; gap:12rpx; flex:1; font-size:24rpx; padding:24rpx 12rpx; background:rgba(255,255,255,.87); border-radius:28rpx; }
+.home-links button text { margin-left:auto; }
+@media (prefers-reduced-motion:no-preference) { .animated { animation:float 4s ease-in-out infinite; } .heart-beat { animation:heartbeat 1.5s ease-in-out infinite; } }
+@keyframes float { 50% { transform:translateY(-12rpx); } }
+@keyframes heartbeat { 15%,45% { transform:scale(1.1); } 30%,60% { transform:scale(1); } }
+@media (min-width:768px) { .home-content { display:grid; grid-template-columns:1fr 1fr; gap:28rpx; } .home-zones { margin-top:0; } .home-links { grid-column:1 / -1; } .home-hero { min-height:840rpx; max-height:1100px; } }

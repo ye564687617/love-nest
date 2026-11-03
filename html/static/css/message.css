@@ -1,0 +1,528 @@
+/* ========================================
+   访客留言墙 — 粉色毛玻璃瀑布流风格
+   ======================================== */
+
+/* ===== 页面容器 ===== */
+.msg-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+/* ===== 发送留言卡片 ===== */
+.msg-compose {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 107, 139, 0.15);
+    box-shadow:
+        0 8px 32px rgba(255, 107, 139, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    margin-bottom: 32px;
+    overflow: hidden;
+    animation: msgFadeIn 0.5s ease;
+}
+
+@keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 卡片头部 */
+.msg-compose-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 24px 0;
+}
+
+.msg-compose-icon {
+    font-size: 22px;
+}
+
+.msg-compose-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF6B8B, #FF9EB5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* 卡片主体 */
+.msg-compose-body {
+    padding: 16px 24px 0;
+}
+
+/* 名字输入 */
+.msg-name-row {
+    margin-bottom: 12px;
+}
+
+.msg-name-input {
+    width: 100%;
+    padding: 12px 18px;
+    border: 1.5px solid rgba(255, 107, 139, 0.15);
+    border-radius: 14px;
+    font-size: 15px;
+    font-family: inherit;
+    background: rgba(255, 107, 139, 0.03);
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    color: #333;
+}
+
+.msg-name-input::placeholder {
+    color: #c0a0a8;
+}
+
+.msg-name-input:focus {
+    outline: none;
+    border-color: rgba(255, 107, 139, 0.4);
+    box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.08);
+    background: #fff;
+}
+
+/* 文本域 */
+.msg-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 16px 18px;
+    border: 1.5px solid rgba(255, 107, 139, 0.15);
+    border-radius: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+    font-family: inherit;
+    background: rgba(255, 107, 139, 0.03);
+    box-sizing: border-box;
+    resize: vertical;
+    transition: all 0.25s ease;
+    color: #333;
+}
+
+.msg-textarea::placeholder {
+    color: #c0a0a8;
+}
+
+.msg-textarea:focus {
+    outline: none;
+    border-color: rgba(255, 107, 139, 0.4);
+    box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.08);
+    background: #fff;
+}
+
+/* ===== 发送区头像 ===== */
+.msg-compose-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 107, 139, 0.2);
+    flex-shrink: 0;
+}
+
+/* ===== 图片上传区 ===== */
+.msg-img-section {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.msg-img-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    background: rgba(255, 107, 139, 0.06);
+    border: 1.5px dashed rgba(255, 107, 139, 0.25);
+    border-radius: 12px;
+    color: #FF6B8B;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.msg-img-btn:hover {
+    background: rgba(255, 107, 139, 0.1);
+    border-color: rgba(255, 107, 139, 0.4);
+}
+
+.msg-img-preview {
+    position: relative;
+    display: inline-block;
+}
+
+.msg-img-preview img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 107, 139, 0.15);
+}
+
+.msg-img-remove {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 60, 60, 0.85);
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.msg-img-remove:hover {
+    background: #e33;
+}
+
+/* ===== 卡片图片 ===== */
+.msg-card-img-wrap {
+    margin-top: 12px;
+}
+
+.msg-card-img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: zoom-in;
+    transition: transform 0.2s;
+}
+
+.msg-card-img:hover {
+    transform: scale(1.01);
+}
+
+/* ===== 卡片真实头像 ===== */
+.msg-card-avatar-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ===== 礼物区域 ===== */
+.msg-gift-section {
+    margin-top: 14px;
+}
+
+.msg-gift-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    cursor: pointer;
+    padding: 6px 0;
+    transition: color 0.2s;
+    user-select: none;
+}
+
+.msg-gift-toggle:hover {
+    color: #FF6B8B;
+}
+
+.msg-gift-arrow {
+    transition: transform 0.3s ease;
+}
+
+.msg-gift-section.expanded .msg-gift-arrow {
+    transform: rotate(180deg);
+}
+
+.msg-gift-grid {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0 4px;
+    animation: giftSlide 0.3s ease;
+}
+
+.msg-gift-section.expanded .msg-gift-grid {
+    display: flex;
+}
+
+@keyframes giftSlide {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.msg-gift-item {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 139, 0.04);
+    border: 1.5px solid rgba(255, 107, 139, 0.12);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 26px;
+}
+
+.msg-gift-item:hover {
+    transform: translateY(-2px) scale(1.05);
+    border-color: rgba(255, 107, 139, 0.35);
+    box-shadow: 0 4px 14px rgba(255, 107, 139, 0.15);
+}
+
+.msg-gift-item.selected {
+    background: linear-gradient(135deg, rgba(255, 107, 139, 0.12), rgba(255, 158, 181, 0.12));
+    border-color: #FF6B8B;
+    box-shadow: 0 4px 16px rgba(255, 107, 139, 0.25);
+    transform: scale(1.08);
+}
+
+/* ===== 底部 ===== */
+.msg-compose-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px 20px;
+}
+
+.msg-char-count {
+    font-size: 13px;
+    color: #bbb;
+    font-variant-numeric: tabular-nums;
+}
+
+.msg-send-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 28px;
+    background: linear-gradient(135deg, #FF6B8B, #FF9EB5);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(255, 107, 139, 0.3);
+    transition: all 0.25s ease;
+}
+
+.msg-send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(255, 107, 139, 0.4);
+}
+
+.msg-send-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 107, 139, 0.3);
+}
+
+/* ===== 瀑布流留言列表 ===== */
+.msg-waterfall {
+    column-count: 2;
+    column-gap: 18px;
+}
+
+/* ===== 留言卡片 ===== */
+.msg-card {
+    break-inside: avoid;
+    margin-bottom: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 107, 139, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    padding: 22px;
+    transition: all 0.3s ease;
+    animation: msgCardIn 0.45s ease both;
+}
+
+@keyframes msgCardIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.msg-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(255, 107, 139, 0.12);
+    border-color: rgba(255, 107, 139, 0.25);
+}
+
+/* 卡片头部 */
+.msg-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.msg-card-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.msg-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.msg-card-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FF6B8B;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.msg-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1px;
+    flex-wrap: wrap;
+}
+
+.msg-card-time {
+    font-size: 11px;
+    color: #bbb;
+}
+
+.msg-card-location {
+    font-size: 11px;
+    color: #FF9EB5;
+    background: rgba(255, 107, 139, 0.08);
+    padding: 1px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.msg-card-client {
+    font-size: 11px;
+    color: #999;
+    white-space: nowrap;
+}
+
+/* 卡片内容 */
+.msg-card-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+    word-break: break-word;
+}
+
+/* 卡片礼物 */
+.msg-card-gift {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(255, 107, 139, 0.08), rgba(255, 158, 181, 0.08));
+    border-radius: 50px;
+    border: 1px solid rgba(255, 107, 139, 0.15);
+}
+
+.msg-card-gift-icon {
+    font-size: 18px;
+}
+
+.msg-card-gift-name {
+    font-size: 12px;
+    color: #FF6B8B;
+    font-weight: 600;
+}
+
+/* ===== 空状态 ===== */
+.msg-empty {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.msg-empty-icon {
+    font-size: 64px;
+    opacity: 0.4;
+    margin-bottom: 16px;
+}
+
+.msg-empty-text {
+    font-size: 15px;
+    color: #bbb;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+    .msg-page { padding: 0 16px 32px; }
+    .msg-compose { border-radius: 20px; }
+    .msg-compose-header { padding: 18px 20px 0; }
+    .msg-compose-body { padding: 14px 20px 0; }
+    .msg-compose-footer { padding: 14px 20px 18px; }
+    .msg-waterfall { column-gap: 14px; }
+    .msg-card { padding: 18px; border-radius: 16px; }
+}
+
+@media (max-width: 520px) {
+    .msg-waterfall { column-count: 1; }
+    .msg-compose-header { padding: 16px 16px 0; }
+    .msg-compose-body { padding: 12px 16px 0; }
+    .msg-compose-footer { padding: 12px 16px 16px; }
+    .msg-card { padding: 16px; }
+    .msg-name-input { padding: 10px 14px; font-size: 14px; }
+    .msg-textarea { min-height: 80px; padding: 12px 14px; font-size: 14px; }
+    .msg-send-btn { padding: 10px 22px; font-size: 14px; }
+    .msg-gift-item { width: 42px; height: 42px; font-size: 22px; }
+}
+
+@media (max-width: 360px) {
+    .msg-page { padding: 0 12px 24px; }
+    .msg-compose { border-radius: 16px; }
+    .msg-card { border-radius: 14px; padding: 14px; }
+}
+.msg-location-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    margin: 20px 0;
+    color: #946b7a;
+    font-size: 13px;
+}
+.msg-location-row label, .msg-location-row small { grid-column: 1 / -1; }
+.msg-location-row small { line-height: 1.7; overflow-wrap: anywhere; }
+.msg-location-row input {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #f0cbd6;
+    border-radius: 8px;
+    background: #fff;
+    color: #72535f;
+    font: inherit;
+    min-height: 44px;
+}
+.msg-location-row input:focus { outline: 2px solid #efa4bb; outline-offset: 2px; }
+.msg-location-row button { min-height: 44px; white-space: nowrap; }
+.msg-location-row button:disabled { opacity: .6; cursor: wait; }
+.msg-pagination { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px; margin:24px 0; }
+.msg-pagination [hidden] { display:none !important; }
+.msg-pagination button { min-height:44px; }
+.msg-pagination [role="status"] { font-size:13px; color:#b34d73; }

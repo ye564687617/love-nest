@@ -1,0 +1,10 @@
+<import src="../../templates/visual.wxml"/>
+<template is="background"/>
+<view class="page"><view class="page-banner"><view class="title">恋爱相册</view><view class="subtitle">把平凡的日子，留成我们的回忆。</view><view class="banner-divider">✿</view><view class="banner-stats"><view class="banner-stat"><text class="banner-number">{{summary.total}}</text>篇瞬间</view><view class="banner-stat"><text class="banner-number">{{summary.cities}}</text>个城市</view><view class="banner-stat"><text class="banner-number">{{summary.record_days}}</text>天记录</view></view></view>
+  <view wx:if="{{canMoments}}" class="row panel"><text>查看未公开瞬间</text><switch checked="{{manageMode}}" bindchange="toggleScope" color="#ff6b8b"/><button class="primary small" data-module="moments" bindtap="edit">记录瞬间</button></view>
+  <view class="timeline"><view class="row"><text class="tag">日期查找动态</text><picker range="{{years}}" bindchange="selectYear"><view class="year-picker">{{year || '全部年份'}}⌄</view></picker></view><scroll-view scroll-x class="month-scroll"><view class="month-track"><button class="{{!month ? 'selected' : ''}}" data-month="0" bindtap="selectMonth"><text class="month-dot">♥</text><text>全部</text></button><button wx:for="{{months}}" wx:key="*this" class="{{month === item ? 'selected' : ''}}" data-month="{{item}}" bindtap="selectMonth"><view class="month-dot"></view><text>{{item}}月</text></button></view></scroll-view></view>
+  <view wx:if="{{loading}}" class="skeleton"></view><view wx:if="{{error}}" class="error">{{error}}<button bindtap="load">重试</button></view>
+  <view wx:if="{{!loading && !error && !list.length}}" class="empty"><image class="empty-mark" src="/assets/album.png"/>还没有记录，下一次心动值得留下。</view>
+  <view wx:if="{{!error}}" class="moment-grid"><template wx:for="{{list}}" wx:key="id" is="moment" data="{{item,canMoments}}"/></view>
+  <button wx:if="{{hasMore && !error}}" bindtap="more" loading="{{moreLoading}}">加载更多</button>
+</view>

@@ -1,0 +1,44 @@
+# Local environment and deployment state
+.env
+.env.*
+*.env
+*.env.*
+!*.env.example
+.deploy.complete
+.deploy.lock
+.deploy.env.tmp
+
+# Actual database credentials and local policy
+/html/inc/config.php
+/html/inc/config.local.php
+/html/inc/config.docker.php
+/html/inc/miniprogram.local.php
+
+# Private content, database dumps and deployment packages
+/html/uploads/*
+!/html/uploads/.gitkeep
+*.sql
+*.sql.gz
+*.sql.bz2
+*.sql.xz
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+/backups/
+/output/
+
+# Development and test artifacts
+/.playwright-cli/
+/miniprogram/project.private.config.json
+/miniprogram/project.config.json
+node_modules/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+._*
+.idea/
+.vscode/
+*.pem
+*.key

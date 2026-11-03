@@ -1,0 +1,63 @@
+<import src="../../templates/visual.wxml"/>
+<template is="background"/>
+<view class="home-page">
+  <view wx:if="{{loading && !site}}" class="page"><view class="skeleton"></view></view>
+  <view wx:if="{{error}}" class="page"><view class="error">{{error}}<button bindtap="load">重试</button></view></view>
+  <block wx:if="{{site && !error}}">
+    <view class="home-hero">
+      <image class="hero-background" src="/assets/web-background.jpg" mode="aspectFill"/>
+      <view class="hero-title">{{site.title}}</view>
+      <view class="hero-content">
+        <view class="couple">
+          <view class="lover animated"><image class="portrait" src="{{site.boy_avatar}}" mode="aspectFill"/><view class="lover-name">{{site.boy_name}}</view></view>
+          <view class="lover animated"><image class="portrait" src="{{site.girl_avatar}}" mode="aspectFill"/><view class="lover-name">{{site.girl_name}}</view></view>
+        </view>
+        <view class="love-center"><image class="heart-beat" src="/assets/heart.png"/><view class="love-message">{{site.subtitle}}</view></view>
+        <view class="together"><view class="time-title">✿ 这是我们一起走过的 ✿</view><view class="time-container">
+          <view class="time-unit"><view class="time-number">{{days}}</view><view class="time-label">天</view></view>
+          <view class="time-unit"><view class="time-number">{{hours}}</view><view class="time-label">时</view></view>
+          <view class="time-unit"><view class="time-number">{{minutes}}</view><view class="time-label">分</view></view>
+          <view class="time-unit"><view class="time-number">{{seconds}}</view><view class="time-label">秒</view></view>
+        </view></view>
+      </view>
+    </view>
+    <view class="home-content">
+      <view class="album-showcase">
+        <view class="album-header"><view class="album-label">相册时光</view><view class="album-heading">甜蜜瞬间</view><button class="small" bindtap="nextStory" disabled="{{!story}}">换一组</button></view>
+        <view wx:if="{{story}}" class="album-grid">
+          <image class="story-image" src="{{story.images[0]}}" mode="aspectFill" bindtap="preview" data-images="{{story.images}}" data-current="{{story.images[0]}}"/>
+          <view class="side-images"><image wx:for="{{sidePhotos}}" wx:key="*this" src="{{item}}" mode="aspectFill" bindtap="preview" data-images="{{sidePhotos}}" data-current="{{item}}"/></view>
+        </view>
+        <view wx:else class="album-empty"><image class="empty-mark" src="/assets/album.png"/>甜蜜瞬间，等你来记录</view>
+        <view wx:if="{{story}}" class="story-caption"><view class="story-text">{{story.content}}</view><view class="row muted"><text>{{story.date}}</text><text>{{story.location}}</text></view></view>
+        <button class="text-link" bindtap="goAlbum">查看全部 →</button>
+      </view>
+      <view class="home-zones">
+        <view class="zone">
+          <view class="zone-title"><image class="icon" src="/assets/days.png"/>纪念日倒计时</view>
+          <view class="countdown-ring"><text class="countdown-number">{{anniversaryDays}}</text><text class="zone-muted">天</text></view>
+          <view class="zone-muted">下一次相恋纪念日</view><view class="zone-muted">{{anniversaryDate}}</view>
+          <button class="text-link" data-page="days" bindtap="open">重要的日子 →</button>
+        </view>
+        <view class="zone">
+          <view class="zone-title"><image class="icon" src="/assets/music.png"/>我们的歌</view>
+          <view class="music-disc" data-page="music" bindtap="open"><image wx:if="{{song && song.cover}}" src="{{song.cover}}" mode="aspectFill"/><image wx:else class="disc-fallback" src="/assets/music-white.png"/><view class="disc-hole"></view></view>
+          <view class="zone-song">{{song ? song.name : '我们的歌单'}}</view><view class="zone-muted">{{song ? song.artist : '听一首喜欢的歌'}}</view>
+          <button class="mini-play" aria-label="打开歌单" data-page="music" bindtap="open"><image src="/assets/play-white.png"/></button>
+        </view>
+        <view class="zone">
+          <view class="zone-title"><image class="icon" src="/assets/heart.png"/>甜蜜数据</view>
+          <view class="sweet-stats"><view><text class="sweet-number">{{moment_count}}</text><view class="zone-muted">相册瞬间</view></view><view><text class="sweet-number">{{days}}</text><view class="zone-muted">相伴天数</view></view></view>
+          <button class="text-link" bindtap="goAlbum">回看我们的故事 →</button>
+        </view>
+        <view class="zone">
+          <view class="zone-title"><image class="icon" src="/assets/checklist.png"/>恋爱清单</view>
+          <view class="list-ring"><text>{{checklistPercent}}%</text></view>
+          <view class="zone-muted">已完成 {{checklist.done}} / {{checklist.total}} 项</view>
+          <button class="text-link" data-page="checklist" bindtap="open">查看全部清单 →</button>
+        </view>
+      </view>
+      <view class="home-links"><button data-page="games" bindtap="open"><image class="icon" src="/assets/games.png"/>情侣小游戏<text>→</text></button><button data-page="{{owner ? 'chat' : 'mine'}}" bindtap="open"><image class="icon" src="/assets/chat.png"/>两人私信<text>→</text></button></view>
+    </view>
+  </block>
+</view>

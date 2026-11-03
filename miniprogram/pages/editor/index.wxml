@@ -1,0 +1,21 @@
+<import src="../../templates/visual.wxml"/>
+<template is="background"/>
+<view class="page"><view class="page-banner"><view class="title">{{module === 'moments' ? '记录甜蜜瞬间' : module === 'lovelist' ? '我们的心愿' : '重要的日子'}}</view><view class="banner-divider">✿</view></view><view class="editor-form"><view wx:if="{{error}}" class="error">{{error}}</view><block wx:if="{{ready}}">
+<block wx:if="{{module === 'moments'}}"><view class="field"><text class="label">这一刻，想记下什么</text><textarea value="{{content}}" maxlength="2000" data-field="content" bindinput="input" placeholder="写下今天的小事…"/></view><view class="field"><text class="label">地点（选填）</text><input value="{{location}}" maxlength="64" data-field="location" bindinput="input"/></view><view class="photos"><view wx:for="{{previews}}" wx:key="index"><image class="photo" src="{{item}}" mode="aspectFill"/><button class="small" data-index="{{index}}" bindtap="removeImage" disabled="{{saving}}">移除</button></view></view><button wx:if="{{images.length < 9}}" bindtap="chooseImages" disabled="{{saving}}">添加照片</button><view class="row section"><text>公开给访客</text><switch checked="{{status}}" data-field="status" bindchange="input" color="#ff6b8b"/></view><view class="hint">未公开的瞬间仅限主人账号查看。图片链接本身不是私密文件保险箱。</view></block>
+<block wx:else>
+  <view class="field"><text class="label">标题</text><input value="{{title}}" maxlength="{{module === 'lovelist' ? 128 : 64}}" data-field="title" bindinput="input"/></view>
+  <view wx:if="{{module === 'lovelist'}}" class="row"><text>已经一起完成</text><switch checked="{{done}}" data-field="done" bindchange="input" color="#ff6b8b"/></view>
+  <block wx:else>
+    <view class="field"><text class="label">类型</text><picker range="{{kinds}}" value="{{kindIndex}}" bindchange="changeKind"><view class="picker">{{kinds[kindIndex]}}</view></picker></view>
+    <view wx:if="{{kindIndex == 3}}" class="field"><text class="label">节日</text><picker range="{{festivals}}" value="{{festivalIndex}}" bindchange="changeFestival"><view class="picker">{{festivals[festivalIndex]}}</view></picker></view>
+    <view wx:if="{{kindIndex == 2}}" class="field"><text class="label">生日历法</text><picker range="{{birthdayCalendars}}" value="{{birthdayCalendarIndex}}" bindchange="changeBirthdayCalendar"><view class="picker">{{birthdayCalendars[birthdayCalendarIndex]}}</view></picker></view>
+    <view wx:if="{{kindIndex == 2 && birthday_calendar === 'lunar'}}" class="field">
+      <text class="label">农历出生年月日</text><view class="lunar-fields"><input type="number" value="{{lunarYear}}" maxlength="4" placeholder="出生年" data-field="lunarYear" bindinput="input"/><input type="number" value="{{lunarMonth}}" maxlength="2" placeholder="月" data-field="lunarMonth" bindinput="input"/><input type="number" value="{{lunarDay}}" maxlength="2" placeholder="日" data-field="lunarDay" bindinput="input"/></view>
+      <view class="row section"><text>出生在闰月</text><switch checked="{{lunarLeap}}" data-field="lunarLeap" bindchange="input" color="#ff6b8b"/></view>
+      <view class="hint">{{birthdayHint}}</view><view class="hint">无同名闰月时按普通月；小月没有三十时按廿九。</view>
+    </view>
+    <view wx:else class="field"><text class="label">{{kindIndex == 2 ? '出生日期（公历）' : '记录日期'}}</text><picker mode="date" value="{{target_date}}" data-field="target_date" bindchange="input"><view class="picker">{{target_date || '选择日期'}}</view></picker></view>
+    <view class="hint">纪念日默认仅主人可见，可在网站后台选择公开。预设节日自动计算下一次日期，自定义节日按公历重复。</view>
+  </block>
+</block>
+<view class="actions section"><button class="primary" loading="{{saving}}" disabled="{{saving}}" bindtap="submit">保存</button><button wx:if="{{id}}" disabled="{{saving}}" bindtap="remove">删除</button></view></block></view></view>

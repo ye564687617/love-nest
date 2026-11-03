@@ -1,0 +1,32 @@
+/* 霓虹玻璃风格 - 整体页面样式 */
+
+/* 内容区域 - 重置 index2.css 的 flex 布局 */
+#pjax-container {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#pjax-container .text-ce {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    #pjax-container {
+        padding: 0 12px;
+    }
+    
+    #pjax-container .text-ce {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+}

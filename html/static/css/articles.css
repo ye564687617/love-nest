@@ -1,0 +1,311 @@
+.stories-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 52px 24px 70px;
+  min-height: 65vh;
+  color: #34353d;
+  letter-spacing: 0;
+}
+.stories-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eadfe3;
+}
+.stories-heading h1 {
+  font-size: 34px;
+  margin: 12px 0;
+}
+.stories-heading p {
+  color: #78717b;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.stories-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0;
+  color: #ac3b62;
+  font-weight: 600;
+}
+.stories-count {
+  color: #817781;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.stories-search {
+  display: flex;
+  width: 100%;
+  max-width: 360px;
+  margin: 26px 0;
+  gap: 8px;
+}
+.stories-search input {
+  min-width: 0;
+  flex: 1;
+  background: #fff;
+  border: 1px solid #e3d9de;
+  padding: 11px 14px;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 14px;
+}
+.stories-search button {
+  background: #b53660;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  width: 42px;
+  cursor: pointer;
+}
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.story-card {
+  border: 1px solid #eadfe3;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 0;
+}
+.story-card > a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+.story-card > a > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+.story-card-content {
+  padding: 23px;
+}
+.story-card h2 {
+  font-size: 21px;
+  line-height: 1.5;
+  margin: 16px 0 12px;
+  overflow-wrap: anywhere;
+}
+.story-card p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #7d747c;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.story-meta {
+  font-size: 12px;
+  color: #89818b;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.story-read-more {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  color: #a32f56;
+  font-size: 13px;
+  margin-top: 24px;
+}
+.story-card:hover {
+  border-color: #bf6986;
+}
+.stories-empty {
+  text-align: center;
+  padding: 70px 16px;
+  color: #827682;
+}
+.stories-empty > i {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+.stories-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #a2345a;
+  margin-bottom: 36px;
+  text-decoration: none;
+  font-size: 14px;
+}
+.story-reading {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.story-reading header {
+  margin-bottom: 32px;
+}
+.story-reading h1 {
+  font-size: 34px;
+  line-height: 1.5;
+  margin: 16px 0 22px;
+  overflow-wrap: anywhere;
+}
+.story-cover {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 34px;
+}
+.story-body {
+  font-size: 16px;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+.story-body p {
+  margin: 0 0 1.3em;
+}
+.story-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto;
+  border-radius: 5px;
+}
+.story-body h2 {
+  font-size: 25px;
+  margin: 32px 0 16px;
+}
+.story-body h3 {
+  font-size: 21px;
+  margin: 28px 0 14px;
+}
+.story-body ul,
+.story-body ol {
+  padding-left: 28px;
+  margin: 18px 0;
+}
+.story-body blockquote {
+  border-left: 3px solid #b53660;
+  margin: 24px 0;
+  padding: 12px 20px;
+  background: #fff6f8;
+  color: #6f606b;
+}
+.story-body pre {
+  overflow-x: auto;
+  padding: 18px;
+  background: #f0f1f4;
+  border-radius: 5px;
+  white-space: pre-wrap;
+}
+.story-body a {
+  color: #a2345a;
+  text-decoration: underline;
+}
+.story-body .ql-align-center {
+  text-align: center;
+}
+.story-body .ql-align-right {
+  text-align: right;
+}
+.story-body .ql-align-justify {
+  text-align: justify;
+}
+.stories-pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+.stories-pages a {
+  color: #a2345a;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+.stories-wrap { color:#58474d; }
+.stories-heading { border-color:#edbdcc; }
+.stories-heading h1 { color:#b73e66; font-size:30px; }
+.stories-heading h1 i { font-size:25px; }
+.stories-heading p, .stories-count { color:#75626b; }
+.stories-search { max-width:440px; }
+.stories-search input { background:rgba(255,255,255,.94); border-color:#e4b5c4; }
+.stories-search button { min-width:44px; min-height:44px; }
+.story-months { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 30px; }
+.story-months a { padding:10px 16px; border-radius:6px; border:1px solid #dfadbe; background:rgba(255,255,255,.88); color:#983653; text-decoration:none; }
+.story-timeline { display:block; position:relative; padding-left:88px; }
+.story-timeline::before { content:''; position:absolute; left:55px; top:18px; bottom:24px; width:2px; background:#dca5b7; }
+.story-month { position:relative; font-size:24px; color:#a8355c; padding:8px 0 20px; scroll-margin-top:100px; }
+.story-month span { font-size:16px; color:#75515f; margin-left:12px; }
+.story-month::before { content:''; position:absolute; left:-39px; top:18px; width:12px; height:12px; border-radius:50%; background:#be466d; border:3px solid #fff2f6; }
+.story-timeline .story-card { position:relative; border:0; background:transparent; border-radius:0; overflow:visible; margin:0 0 32px; }
+.story-day { position:absolute; right:calc(100% + 45px); top:20px; font-size:24px; color:#8c3e58; text-align:center; line-height:1.2; }
+.story-day small { display:block; font-size:11px; color:#725c65; margin-top:8px; }
+.story-timeline .story-entry { display:block; height:auto; background:rgba(255,250,252,.94); border:1px solid #eac5d2; border-radius:8px; overflow:hidden; box-shadow:0 6px 24px #82334b0c; transition:border-color .2s; }
+.story-timeline .story-entry.has-cover { display:grid; grid-template-columns:minmax(180px,35%) minmax(0,1fr); }
+.story-timeline .story-entry > img { width:100%; height:100%; min-height:250px; aspect-ratio:auto; object-fit:cover; display:block; }
+.story-entry:hover { border-color:#bf6986; }
+.story-card-content { min-width:0; padding:28px; }
+.story-card p { color:#705e66; -webkit-line-clamp:4; }
+.story-meta { color:#79626d; gap:14px; }
+.story-meta i { margin-right:5px; }
+.story-read-more { color:#a03356; }
+.story-reading { background:rgba(255,250,252,.96); padding:34px; border:1px solid #eac5d2; border-radius:8px; }
+.story-reading h1 { color:#813d54; }
+.stories-empty { background:rgba(255,250,252,.92); border-radius:8px; color:#75626b; }
+.story-months a:focus-visible, .story-entry:focus-visible, .stories-search button:focus-visible { outline:3px solid #a73359; outline-offset:4px; }
+@media(max-width:700px) {
+  .story-timeline { padding-left:28px; }
+  .story-timeline::before { left:5px; }
+  .story-month::before { left:-28px; }
+  .story-timeline .story-entry.has-cover { grid-template-columns:minmax(0,1fr); }
+  .story-timeline .story-entry > img { aspect-ratio:16/10; min-height:0; max-height:320px; }
+  .story-day { position:static; display:block; text-align:left; margin:0 0 10px; font-size:16px; }
+  .story-day small { display:inline; margin-left:8px; font-size:12px; }
+  .story-card-content { padding:20px; }
+  .story-reading { padding:22px 18px; }
+  .stories-heading { flex-wrap:wrap; gap:10px; }
+}
+@media(prefers-reduced-transparency:reduce) { .story-timeline .story-entry, .story-reading, .stories-empty { background:#fff9fb; } }
+@media (max-width: 850px) {
+  .stories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 550px) {
+  .stories-wrap {
+    padding: 28px 18px 45px;
+  }
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+  .stories-heading h1,
+  .story-reading h1 {
+    font-size: 28px;
+  }
+  .stories-heading {
+    align-items: flex-start;
+  }
+  .stories-count {
+    margin-top: 4px;
+  }
+  .story-card-content {
+    padding: 20px;
+  }
+  .stories-heading p {
+    font-size: 14px;
+  }
+  .story-body {
+    font-size: 15px;
+  }
+  .stories-back {
+    margin-bottom: 24px;
+  }
+}

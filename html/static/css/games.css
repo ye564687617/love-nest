@@ -1,0 +1,1493 @@
+/* 游戏页面样式 */
+
+/* 游戏选择器 */
+.game-selector {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.game-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(255, 107, 139, 0.12);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 139, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.game-card:hover::before {
+    opacity: 1;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 36px rgba(255, 107, 139, 0.16);
+    border-color: rgba(255, 107, 139, 0.25);
+}
+
+.game-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF6B8B;
+    animation: bounce 2s ease-in-out infinite;
+}
+.game-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.game-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #5D4037;
+    margin-bottom: 12px;
+}
+
+.game-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.game-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(255, 107, 139, 0.3);
+}
+
+.game-badge.hot {
+    background: linear-gradient(135deg, #FF8E53, #FF6B8B);
+    box-shadow: 0 4px 12px rgba(255, 142, 83, 0.3);
+}
+
+/* 游戏容器 */
+.game-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.back-btn {
+    background: none;
+    color: #FF6B8B;
+    border: 1.5px solid rgba(255, 107, 139, 0.25);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: translateX(-3px);
+    background: rgba(255, 107, 139, 0.08);
+}
+
+.game-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #5D4037;
+}
+
+/* ========== 情侣问答样式 ========== */
+
+.quiz-section {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quiz-progress {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FF6B8B;
+    background: rgba(255, 107, 139, 0.08);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+/* 游戏教程 */
+.tutorial-card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 40px 35px;
+    box-shadow: 0 4px 24px rgba(200, 150, 140, 0.1);
+    border: 1px solid rgba(255, 230, 220, 0.55);
+}
+
+.tutorial-icon {
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    color: #FF6B8B;
+    animation: bounce 2s ease-in-out infinite;
+}
+.tutorial-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+.tutorial-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #5D4037;
+}
+
+.tutorial-content {
+    margin-bottom: 25px;
+}
+
+.tutorial-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 18px;
+    padding: 15px;
+    background: rgba(255, 107, 139, 0.04);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.tutorial-step:hover {
+    transform: translateX(5px);
+    background: rgba(255, 107, 139, 0.08);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.step-text {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 4px;
+}
+
+.tutorial-tips {
+    background: rgba(255, 107, 139, 0.06);
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.tip-icon {
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    color: #FF8E53;
+}
+.tip-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+.tutorial-tips span:last-child {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.start-btn {
+    display: block;
+    width: 200px;
+    margin: 40px auto;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 107, 139, 0.25);
+    transition: all 0.3s ease;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.35);
+}
+
+/* 答题区域 */
+.current-player {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 107, 139, 0.06);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #5D4037;
+}
+
+.player-name {
+    color: #FF6B8B;
+    font-size: 22px;
+}
+
+.question-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.question-number {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer-option {
+    padding: 18px 25px;
+    background: rgba(255, 107, 139, 0.04);
+    border: 1.5px solid rgba(255, 107, 139, 0.15);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.answer-option:hover {
+    transform: translateX(5px);
+    border-color: #FF6B8B;
+    background: rgba(255, 107, 139, 0.08);
+    box-shadow: 0 4px 12px rgba(255, 107, 139, 0.12);
+}
+
+.answer-option.selected {
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(255, 107, 139, 0.25);
+}
+
+/* 结果展示 */
+.result-card {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 0 4px 24px rgba(200, 150, 140, 0.1);
+    border: 1px solid rgba(255, 230, 220, 0.55);
+}
+
+.result-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    color: #FF6B8B;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+.result-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+.result-score {
+    font-size: 72px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+}
+
+.result-label {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.result-message {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    padding: 20px;
+    background: rgba(255, 107, 139, 0.04);
+    border-radius: 15px;
+}
+
+.result-details {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.detail-item {
+    text-align: center;
+}
+
+.detail-label {
+    display: block;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.detail-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: #FF6B8B;
+}
+
+.retry-btn {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 107, 139, 0.25);
+    transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.35);
+}
+
+/* ========== 转盘样式 ========== */
+
+.wheel-types {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.wheel-type-card {
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1.5px solid rgba(255, 107, 139, 0.15);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+}
+
+.wheel-type-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.12);
+}
+
+.wheel-type-card.active {
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(255, 107, 139, 0.25);
+}
+
+.type-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+}
+.type-icon svg {
+    width: 1em;
+    height: 1em;
+}
+.wheel-type-card.active .type-icon svg {
+    stroke: #fff;
+}
+
+.type-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 转盘主体 */
+.wheel-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto 40px;
+}
+
+#spin-wheel-canvas {
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 10px rgba(255, 255, 255, 0.9),
+        0 0 0 15px rgba(255, 107, 139, 0.2),
+        0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* 指针：相对转盘本身定位在 12 点方向，三角尖端朝下指向扇区
+   （原来挂在 .wheel-center 里、top:-30px，尖端只到半径 50px 处，压在中心按钮上） */
+.wheel-pointer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 12;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 36px solid #FF6B8B;
+    filter: drop-shadow(0 3px 7px rgba(255, 107, 139, 0.45));
+    pointer-events: none;
+}
+
+.spin-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    border: 5px solid white;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 4px 20px rgba(255, 107, 139, 0.3),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.spin-button:hover:not(:disabled) {
+    transform: scale(1.08);
+    box-shadow: 
+        0 6px 24px rgba(255, 107, 139, 0.4),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.spin-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 自定义输入 */
+/* 前台没有全局 box-sizing 重置，这里统一用 border-box：
+   否则 textarea 的 width:100% 会再叠加 padding(15×2) + 边框(1.5×2) = 33px，
+   整个输入框会溢出卡片右侧；.custom-input-area 的 max-width 也会被撑大 40px */
+.custom-input-area,
+.custom-input-area * {
+    box-sizing: border-box;
+}
+
+.custom-input-area {
+    max-width: 500px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.input-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.custom-textarea {
+    display: block;          /* 去掉 textarea 作为 inline-block 的基线空隙 */
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    border: 1.5px solid rgba(255, 107, 139, 0.15);
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.custom-textarea:focus {
+    outline: none;
+    border-color: #FF6B8B;
+    box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.08);
+}
+
+.apply-btn {
+    display: block;
+    width: 150px;
+    margin: 15px auto 0;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 107, 139, 0.25);
+    transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.35);
+}
+
+/* 转盘结果 */
+.wheel-result {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 107, 139, 0.04);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.result-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #5D4037;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.result-title svg {
+    color: #FF6B8B;
+}
+
+.result-content {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    padding: 15px 30px;
+    background: white;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 2px 12px rgba(200, 150, 140, 0.1);
+}
+
+/* 历史记录 */
+.wheel-history {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.history-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255, 107, 139, 0.03);
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.history-time {
+    color: #999;
+    font-size: 12px;
+}
+
+.history-result {
+    font-weight: 600;
+    color: #FF6B8B;
+}
+
+/* ========== 骰子游戏样式 ========== */
+
+.dice-section {
+    animation: fadeIn 0.5s ease;
+}
+
+/* 选择先手 */
+.selector-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.player-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.select-player-card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 280px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1.5px solid rgba(255, 107, 139, 0.15);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.select-player-card:hover {
+    transform: translateY(-8px);
+    border-color: #FF6B8B;
+    box-shadow: 0 10px 30px rgba(255, 107, 139, 0.15);
+}
+
+.select-avatar {
+    font-size: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    color: #FF6B8B;
+    animation: pulse 2s ease-in-out infinite;
+}
+.select-avatar svg {
+    width: 1em;
+    height: 1em;
+}
+
+.select-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.vs-badge {
+    font-size: 28px;
+    font-weight: 700;
+    color: #FF6B8B;
+}
+
+/* 骰子游戏区域 */
+.dice-turn {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 107, 139, 0.06);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #5D4037;
+}
+
+.turn-player {
+    color: #FF6B8B;
+    font-size: 22px;
+}
+
+/* 结果预览卡片 - 放在上方 */
+.dice-result-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(200, 150, 140, 0.1);
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 230, 220, 0.55);
+}
+
+.result-preview-item {
+    text-align: center;
+    flex: 1;
+}
+
+.preview-avatar {
+    font-size: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    color: #FF6B8B;
+}
+.preview-avatar svg {
+    width: 1em;
+    height: 1em;
+}
+
+.preview-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.preview-score {
+    font-size: 48px;
+    font-weight: 700;
+    color: #FF6B8B;
+}
+
+.result-preview-divider {
+    width: 2px;
+    height: 70px;
+    background: linear-gradient(to bottom, #FF6B8B, #FF8E53);
+    border-radius: 2px;
+    opacity: 0.35;
+}
+
+.dice-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.dice-box {
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 8px 24px rgba(255, 107, 139, 0.25),
+        inset 0 -8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 8px 25px rgba(255, 255, 255, 0.1);
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    cursor: pointer;             /* 骰子本体也可点击投掷 */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 未滚动时的轻微悬停/聚焦反馈（滚动、落定动画用 transform，故排除这两个状态） */
+.dice-box:not(.rolling):not(.landing):hover {
+    transform: scale(1.04);
+    box-shadow:
+        0 12px 30px rgba(255, 107, 139, 0.32),
+        inset 0 -8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.dice-box:not(.rolling):not(.landing):active {
+    transform: scale(0.97);
+}
+
+.dice-box:focus-visible {
+    box-shadow:
+        0 0 0 3px rgba(255, 107, 139, 0.35),
+        0 8px 24px rgba(255, 107, 139, 0.25),
+        inset 0 -8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* 滚动中不可点击，光标变默认 */
+.dice-box.rolling {
+    cursor: default;
+}
+
+.dice {
+    font-size: 90px;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.12s ease-out;   /* 让逐帧旋转更顺滑 */
+    display: block;
+    will-change: transform;
+}
+
+/* ====== 骰子滚动 / 落定动画 ====== */
+
+/* 滚动中：盒子上下跳动 + 轻微倾斜缩放（JS 每帧只改骰子自身角度） */
+@keyframes diceTumble {
+    0%   { transform: translateY(0) rotate(0deg) scale(1); }
+    30%  { transform: translateY(-16px) rotate(-7deg) scale(1.05); }
+    62%  { transform: translateY(0) rotate(5deg) scale(0.98); }
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+.dice-box.rolling {
+    animation: diceTumble 0.4s ease-in-out infinite;
+    box-shadow:
+        0 14px 32px rgba(255, 107, 139, 0.38),
+        inset 0 -8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* 落定：一次轻微回弹，强化「砸下停住」的手感 */
+@keyframes diceLand {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(1.13); }
+    72%  { transform: scale(0.97); }
+    100% { transform: scale(1); }
+}
+
+.dice-box.landing {
+    animation: diceLand 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.roll-btn {
+    display: block;
+    width: 200px;
+    margin: 0 auto 40px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 107, 139, 0.25);
+    transition: all 0.3s ease;
+}
+
+.roll-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.35);
+}
+
+.roll-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========== 结果弹窗样式 ========== */
+
+.result-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.result-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    max-width: 450px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease forwards;
+}
+
+@keyframes modalSlideIn {
+    to {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    color: #666;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.15);
+    color: #333;
+}
+
+.modal-icon {
+    font-size: 70px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    color: #FF6B8B;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+.modal-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+.modal-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #5D4037;
+}
+
+.modal-result {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 107, 139, 0.04);
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-scores {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 15px;
+}
+
+.modal-score-item {
+    text-align: center;
+}
+
+.modal-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.modal-score {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: #FF6B8B;
+}
+
+.modal-btn {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 107, 139, 0.25);
+    transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.35);
+}
+
+/* 中间结果卡片 */
+.intermediate-card {
+    max-width: 350px;
+    padding: 35px 25px;
+}
+
+.intermediate-score {
+    font-size: 56px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #FF6B8B;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    /* 手机端保持与桌面一致的多列网格，整体等量缩小：
+       2 列排布；卡片为奇数个时最后一个自动居中（与桌面「2 + 1」的观感一致） */
+    .game-selector {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 12px;
+        margin: 24px auto;
+        padding: 0 14px;
+    }
+
+    .game-card {
+        flex: 0 1 calc(50% - 6px);
+        width: auto;
+        min-width: 0;
+        max-width: none;
+        box-sizing: border-box;
+        padding: 18px 12px;
+        border-radius: 16px;
+    }
+
+    .game-icon {
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+
+    .game-title {
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+
+    .game-desc {
+        font-size: 11.5px;
+        margin-bottom: 0;
+    }
+
+    .game-badge {
+        top: 8px;
+        right: 8px;
+        padding: 3px 9px;
+        border-radius: 14px;
+        font-size: 10px;
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .question-card {
+        padding: 25px 20px;
+    }
+
+    .question-text {
+        font-size: 18px;
+    }
+
+    .wheel-wrapper {
+        width: 320px;
+        height: 320px;
+    }
+
+    #spin-wheel-canvas {
+        width: 320px !important;
+        height: 320px !important;
+    }
+
+    .spin-button {
+        width: 80px;
+        height: 80px;
+        font-size: 14px;
+    }
+
+    .result-score {
+        font-size: 56px;
+    }
+
+    .result-details {
+        gap: 20px;
+    }
+
+    /* 三个类型卡片压成一行，等比缩小 */
+    .wheel-types {
+        gap: 8px;
+        margin-bottom: 24px;
+        flex-wrap: nowrap;
+    }
+
+    .wheel-type-card {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 10px 6px;
+        border-radius: 12px;
+    }
+
+    .wheel-type-card:hover {
+        transform: none;
+    }
+
+    .type-icon {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+
+    .type-name {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* 指针随转盘等比缩小 */
+    .wheel-pointer {
+        border-left-width: 13px;
+        border-right-width: 13px;
+        border-top-width: 30px;
+    }
+
+    /* 自定义选项输入区：收紧内边距，「应用」按钮加大点击区 */
+    .custom-input-area {
+        padding: 14px 12px;
+        margin-bottom: 22px;
+        border-radius: 16px;
+    }
+
+    .input-label {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .custom-textarea {
+        padding: 12px;
+        font-size: 13px;
+        border-radius: 12px;
+    }
+
+    .apply-btn {
+        width: 100%;
+        max-width: 220px;
+        padding: 11px 20px;
+    }
+
+    /* 选择先手：两张卡 + VS 保持一行，整体缩小 */
+    .selector-title {
+        font-size: 16px;
+        margin-bottom: 18px;
+    }
+
+    .player-selector {
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+
+    .select-player-card {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: none;
+        padding: 16px 10px;
+        border-radius: 16px;
+    }
+
+    .select-player-card:hover {
+        transform: none;
+    }
+
+    .select-avatar {
+        font-size: 40px;
+        margin-bottom: 8px;
+    }
+
+    .select-label {
+        font-size: 12.5px;
+    }
+
+    .vs-badge {
+        flex-shrink: 0;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 小屏：仍为 2 列，进一步压缩尺寸 */
+    .game-selector {
+        gap: 10px;
+        padding: 0 10px;
+        margin: 18px auto;
+    }
+
+    .game-card {
+        flex: 0 1 calc(50% - 5px);
+        padding: 14px 10px;
+        border-radius: 14px;
+    }
+
+    .game-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+    }
+
+    .game-title {
+        font-size: 13.5px;
+        margin-bottom: 5px;
+    }
+
+    .game-desc {
+        font-size: 10.5px;
+    }
+
+    .game-badge {
+        top: 6px;
+        right: 6px;
+        padding: 2px 7px;
+        font-size: 9px;
+    }
+
+    .player-avatar {
+        font-size: 60px;
+    }
+
+    .vs-divider {
+        font-size: 24px;
+    }
+
+    .result-card {
+        padding: 30px 20px;
+    }
+
+    .result-score {
+        font-size: 48px;
+    }
+
+    .wheel-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+
+    #spin-wheel-canvas {
+        width: 280px !important;
+        height: 280px !important;
+    }
+
+    .spin-button {
+        width: 70px;
+        height: 70px;
+        font-size: 13px;
+    }
+
+    /* 小屏：类型卡片仍保持一行，进一步压缩 */
+    .wheel-types {
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .wheel-type-card {
+        padding: 8px 4px;
+        border-radius: 10px;
+    }
+
+    .type-icon {
+        font-size: 19px;
+        margin-bottom: 4px;
+    }
+
+    .type-name {
+        font-size: 11px;
+        letter-spacing: -0.2px;
+    }
+
+    .wheel-pointer {
+        border-left-width: 11px;
+        border-right-width: 11px;
+        border-top-width: 26px;
+    }
+
+    /* 自定义选项输入区：小屏进一步压缩 */
+    .custom-input-area {
+        padding: 12px 10px;
+        margin-bottom: 18px;
+        border-radius: 14px;
+    }
+
+    .input-label {
+        font-size: 12.5px;
+        margin-bottom: 8px;
+    }
+
+    .custom-textarea {
+        padding: 10px;
+        font-size: 12.5px;
+        border-radius: 10px;
+    }
+
+    .apply-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    /* 选择先手：小屏再压一档 */
+    .selector-title {
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    .player-selector {
+        gap: 6px;
+    }
+
+    .select-player-card {
+        padding: 14px 8px;
+        border-radius: 14px;
+    }
+
+    .select-avatar {
+        font-size: 34px;
+        margin-bottom: 6px;
+    }
+
+    .select-label {
+        font-size: 11.5px;
+    }
+
+    .vs-badge {
+        font-size: 15px;
+    }
+}

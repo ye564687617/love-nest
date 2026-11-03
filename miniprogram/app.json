@@ -1,0 +1,13 @@
+{
+  "pages": ["pages/home/index", "pages/album/index", "pages/days/index", "pages/checklist/index", "pages/mine/index", "pages/editor/index", "pages/chat/index", "pages/music/index", "pages/games/index"],
+  "window": { "navigationBarTitleText": "恋爱小窝", "navigationBarBackgroundColor": "#fff5f7", "navigationBarTextStyle": "black", "backgroundColor": "#f9eff2", "enablePullDownRefresh": true },
+  "tabBar": { "color": "#8b8588", "selectedColor": "#ff6b8b", "backgroundColor": "#fffafb", "borderStyle":"white", "list": [
+    {"pagePath": "pages/home/index", "text": "小窝", "iconPath":"assets/home-muted.png", "selectedIconPath":"assets/home.png"},
+    {"pagePath": "pages/album/index", "text": "相册", "iconPath":"assets/album-muted.png", "selectedIconPath":"assets/album.png"},
+    {"pagePath": "pages/days/index", "text": "纪念日", "iconPath":"assets/days-muted.png", "selectedIconPath":"assets/days.png"},
+    {"pagePath": "pages/checklist/index", "text": "清单", "iconPath":"assets/checklist-muted.png", "selectedIconPath":"assets/checklist.png"},
+    {"pagePath": "pages/mine/index", "text": "我们", "iconPath":"assets/mine-muted.png", "selectedIconPath":"assets/mine.png"}
+  ] },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

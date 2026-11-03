@@ -1,0 +1,511 @@
+/* 恋爱清单样式 */
+
+/* 进度条卡片（复用时间轴毛玻璃卡片样式） */
+.progress-card {
+    margin-bottom: 24px;
+}
+
+.progress-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.progress-text-inline {
+    font-family: 'Montserrat', 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #888;
+    font-weight: 500;
+}
+
+.progress-card .progress-bar {
+    height: 10px;
+    background: rgba(255, 107, 139, 0.12);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+.progress-card .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FF6B8B, #FF9EB5);
+    border-radius: 10px;
+    transition: width 0.8s ease;
+    box-shadow: 0 0 10px rgba(255, 107, 139, 0.35);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .progress-card-header {
+        margin-bottom: 12px;
+    }
+    .progress-text-inline {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .progress-card-header {
+        margin-bottom: 10px;
+    }
+    .progress-text-inline {
+        font-size: 11px;
+    }
+    .progress-card .progress-bar {
+        height: 8px;
+    }
+}
+
+/* 清单容器 */
+.checklist-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* 分区 */
+.checklist-section {
+    margin-bottom: 40px;
+}
+
+/* 分区标题：磨砂玻璃 + 渐变底色，让标题更醒目 */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 11px 16px;
+    border-radius: 14px;
+    /* 白色描边 = 玻璃边缘高光 */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: linear-gradient(135deg,
+        rgba(255, 107, 139, 0.20) 0%,
+        rgba(255, 158, 181, 0.10) 46%,
+        rgba(255, 255, 255, 0.58) 100%);
+    -webkit-backdrop-filter: blur(14px) saturate(165%);
+    backdrop-filter: blur(14px) saturate(165%);
+    box-shadow:
+        0 4px 18px rgba(255, 107, 139, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* 已完成分区：青绿系，与「已完成」卡片呼应 */
+.checklist-section.completed .section-header {
+    background: linear-gradient(135deg,
+        rgba(78, 205, 196, 0.22) 0%,
+        rgba(120, 220, 210, 0.10) 46%,
+        rgba(255, 255, 255, 0.58) 100%);
+    box-shadow:
+        0 4px 18px rgba(78, 205, 196, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.section-icon {
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    color: #FF6B8B;
+}
+.section-icon svg {
+    width: 1em;
+    height: 1em;
+}
+.checklist-section.completed .section-icon {
+    color: #23A79D;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Noto Serif SC', serif;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.section-count {
+    font-size: 13px;
+    font-weight: 600;
+    color: #FF6B8B;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 107, 139, 0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+.checklist-section.completed .section-count {
+    color: #23A79D;
+    border-color: rgba(78, 205, 196, 0.35);
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        gap: 9px;
+        padding: 9px 12px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+    }
+    .section-icon {
+        font-size: 20px;
+    }
+    .section-title {
+        font-size: 16px;
+    }
+    .section-count {
+        font-size: 12px;
+        padding: 3px 10px;
+    }
+}
+
+/* 清单项 */
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.checklist-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(255, 182, 193, 0.15);
+    border-color: rgba(255, 182, 193, 0.2);
+}
+
+/* 绑定了动态的清单项 - 可点击 */
+.checklist-item[data-moment-id] {
+    cursor: pointer;
+}
+
+.checklist-item[data-moment-id]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(255, 107, 139, 0.18);
+    border-color: rgba(255, 107, 139, 0.25);
+}
+
+.checklist-item[data-moment-id] .check-content.has-moment .check-title {
+    color: #FF6B8B;
+}
+
+.image-icon.has-moment {
+    background: rgba(255, 107, 139, 0.1);
+    color: #FF6B8B;
+}
+
+.image-icon.has-moment:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 10px rgba(255, 107, 139, 0.25);
+}
+
+/* 已完成样式 */
+.checklist-item.completed {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.98) 0%, 
+        rgba(240, 252, 250, 0.95) 100%);
+}
+
+.checklist-item.completed:hover {
+    box-shadow: 0 4px 20px rgba(78, 205, 196, 0.15);
+}
+
+/* 待完成样式 */
+.checklist-item.pending {
+    background: rgba(250, 250, 250, 0.95);
+}
+
+.checklist-item.pending .check-title {
+    color: #333;
+}
+
+/* 特殊项（最后一项） */
+.checklist-item.special {
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 139, 0.08) 0%, 
+        rgba(255, 142, 83, 0.06) 50%, 
+        rgba(78, 205, 196, 0.05) 100%);
+    border: 1px solid rgba(255, 107, 139, 0.2);
+}
+
+.checklist-item.special .check-title {
+    color: #FF6B8B;
+    font-weight: 600;
+}
+
+/* 状态区域 */
+.check-status {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.checklist-item.completed .check-status {
+    background: linear-gradient(135deg, #4ECDC4, #6AD1C8);
+    box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
+}
+
+.checklist-item.pending .check-status {
+    background: linear-gradient(135deg, #FF8E53, #FFB87A);
+    box-shadow: 0 2px 8px rgba(255, 142, 83, 0.25);
+}
+
+.checklist-item.special .check-status {
+    background: linear-gradient(135deg, #FF6B8B, #FF9EB5);
+    box-shadow: 0 2px 8px rgba(255, 107, 139, 0.3);
+}
+
+.status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.status-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.checklist-item.pending .status-icon {
+    color: #fff;
+}
+
+/* 内容区域 */
+.check-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.check-title {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.check-status-text {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 2px;
+}
+
+/* 操作区域 */
+.check-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.check-date {
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap;
+}
+
+.image-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.image-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.image-icon.has-image {
+    background: rgba(78, 205, 196, 0.1);
+    color: #4ECDC4;
+}
+
+.image-icon.has-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 10px rgba(78, 205, 196, 0.25);
+}
+
+.image-icon.no-image {
+    background: rgba(0, 0, 0, 0.04);
+    color: #ccc;
+    cursor: default;
+}
+
+.pending-badge {
+    font-size: 11px;
+    color: #999;
+    padding: 4px 10px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.pending-badge.special {
+    background: rgba(255, 107, 139, 0.12);
+    color: #FF6B8B;
+    border-color: rgba(255, 107, 139, 0.25);
+}
+
+/* 图片预览弹窗 */
+.image-preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.image-preview-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.preview-card {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    max-height: 90vh;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.preview-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    color: #666;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.preview-close:hover {
+    background: rgba(0, 0, 0, 0.15);
+    color: #333;
+}
+
+.preview-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-image {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    background: #f8f8f8;
+}
+
+.preview-title {
+    padding: 16px 20px;
+    font-size: 15px;
+    color: #333;
+    font-family: 'Noto Serif SC', serif;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .checklist-container {
+        padding: 0 12px;
+    }
+
+    .checklist-item {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .check-thumb {
+        width: 50px;
+        height: 50px;
+    }
+
+    .check-title {
+        font-size: 14px;
+    }
+
+    .check-meta {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .progress-bar-container {
+        padding: 0 12px;
+    }
+
+    .preview-card {
+        max-width: 95vw;
+        padding: 12px;
+    }
+}
+
+/* 统计项样式增强 */
+.banner-stats .stat-item.completed .stat-number {
+    color: #4ECDC4;
+}
+
+.banner-stats .stat-item.pending .stat-number {
+    color: #FF8E53;
+}
+
+.banner-stats .stat-item.progress .stat-number {
+    background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
